@@ -19,17 +19,21 @@ function bad_taste() {
   exit 255
 }
 
+function image_present() {
+  if [ -f "${image}" ]; then
+    echo "Image for flavor ${flavor} has already been downloaded."
+    exit 0
+  else
+    echo "Missing image for ${flavor}, downloading..."
+  fi
+}
+
 function download_image() {
-    if [ -f "${image}" ]; then
-        echo "Image for flavor ${flavor} has already been downloaded."
-    else
-        echo "Missing image for ${flavor}, downloading..."
-        wget -nc ${dlurl}
-        if [ $? -ne 0 ]; then
-            echo "Error: ${flavor} could not be downloaded."
-            exit 255
-        fi
-    fi
+  wget -nc ${dlurl}
+  if [ $? -ne 0 ]; then
+      echo "Error: ${flavor} could not be downloaded."
+      exit 255
+  fi
 }
 
 function validate_image() {
@@ -82,6 +86,8 @@ if [ ! -d "${image_dir}" ]; then
     mkdir "${image_dir}"
 fi
 
+# do the work
+image_present
 pushd "${image_dir}"
 download_image
 validate_image
