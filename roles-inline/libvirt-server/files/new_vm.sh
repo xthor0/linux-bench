@@ -104,7 +104,7 @@ done
 # turn the flavor variable into a location for images
 case ${flavor} in
   jammy) image="${image_dir}/jammy.qcow2"; dlurl="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"; shaurl="https://cloud-images.ubuntu.com/jammy/current/SHA256SUMS"; variant="ubuntu20.04";;
-  alma9) image="${image_dir}/almalinux9.qcow2"; dlurl="https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2"; shaurl="https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/CHECKSUM" variant="centos8";;
+  alma9) image="${image_dir}/alma9.qcow2"; dlurl="https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2"; shaurl="https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/CHECKSUM" variant="centos8";;
   rocky9) image="${image_dir}/rocky9.qcow2"; dlurl="https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud.latest.x86_64.qcow2"; shaurl="https://dl.rockylinux.org/pub/rocky/9/images/x86_64/CHECKSUM"; variant="rocky9";;
   bullseye) image="${image_dir}/bullseye.qcow2"; dlurl="https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2"; shaurl="https://cloud.debian.org/images/cloud/bullseye/latest/SHA512SUMS"; variant="debian10";;
   *) bad_taste;;
