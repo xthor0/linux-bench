@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-image_dir=${SCRIPT_DIR}/../local/cloud-images
+image_dir=/srv/cloud-images
 target_dir=/var/lib/libvirt/images
 
 # default options

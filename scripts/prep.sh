@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-image_dir=${SCRIPT_DIR}/../local/cloud-images
+image_dir=/srv/cloud-images
 
 # display usage
 function usage() {
@@ -83,7 +83,7 @@ esac
 
 # make the directory if necessary
 if [ ! -d "${image_dir}" ]; then
-    mkdir "${image_dir}"
+    sudo mkdir "${image_dir}" && sudo chown $(whoami):$(id -gn) "${image_dir}"
 fi
 
 # do the work
