@@ -1,0 +1,4 @@
+- name: Set up libvirt host
+  hosts: localhost
+  roles:
+    - { role: libvirt-server, tags: ["libvirt-server"] }
