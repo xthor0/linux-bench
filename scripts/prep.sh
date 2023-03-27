@@ -46,7 +46,7 @@ function validate_image() {
         sha256sum -c sha256
     fi
     if [ $? -eq 0 ]; then
-        mv $(basename ${dlurl}) ${flavor}.qcow2
+        mv $(basename ${dlurl}) "${image}"
     else
         echo "Error: ${flavor} could not be validated after download."
         exit 255
