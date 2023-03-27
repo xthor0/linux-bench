@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+
+  roles:
+    - role: geerlingguy.repo-epel
+      when: ansible_os_family == "RedHat"
+    - geerlingguy.mysql
+    - geerlingguy.apache
+    - community.zabbix.zabbix_server
+    - role: community.zabbix.zabbix_web
+      tags: ["zabbix-web"]
+    - role: community.zabbix.zabbix_agent
+      tags: ["zabbix-agent"]
+    - role: zabbix-fix-httpd
+      tags: ["zabbix-fix-httpd"]
