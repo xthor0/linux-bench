@@ -47,6 +47,7 @@ function validate_image() {
     fi
     if [ $? -eq 0 ]; then
         mv $(basename ${dlurl}) "${image}"
+        rm sha256
     else
         echo "Error: ${flavor} could not be validated after download."
         exit 255
@@ -83,7 +84,12 @@ esac
 
 # make the directory if necessary
 if [ ! -d "${image_dir}" ]; then
-    sudo mkdir "${image_dir}" && sudo chown $(whoami):$(id -gn) "${image_dir}"
+  echo "You may be prompted for your sudo password to create ${image_dir} and set permissions."
+  sudo mkdir "${image_dir}" && sudo chown $(whoami):$(id -gn) "${image_dir}"
+  if [ $? -ne 0 ]; then
+    echo "Error: could not create ${image_dir} or set permissions. Exiting."
+    exit 255
+  fi
 fi
 
 # do the work
